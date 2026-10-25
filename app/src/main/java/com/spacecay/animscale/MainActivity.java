@@ -100,7 +100,18 @@ public class MainActivity extends Activity {
         grant.setOnClickListener(v -> grantWithShizuku());
         setupCard.addView(grant, fullWidth());
 
-        setupCard.addView(heading("Option B — from a PC (USB debugging)"));
+        setupCard.addView(heading("Option B — from a PC (USB cable, no Wi-Fi)"));
+        setupCard.addView(para("On the phone:\n"
+                + "1. Settings → About phone → Software information → tap Build number 7 times\n"
+                + "2. Settings → Developer options → turn on USB debugging\n\n"
+                + "On the PC (Windows):\n"
+                + "3. Download \"SDK Platform-Tools for Windows\" from developer.android.com/tools/releases/platform-tools and unzip it\n"
+                + "4. Open the platform-tools folder, click the address bar, type cmd, press Enter\n"
+                + "5. Connect the phone by USB (use a data cable). If asked, choose \"Transferring files\"\n"
+                + "6. Type: adb devices — then tap Allow on the phone (tick Always allow)\n"
+                + "7. Run adb devices again — you should see your phone with the word \"device\"\n"
+                + "8. Paste the command below and press Enter. No output means it worked\n"
+                + "9. Unplug, tap Check again here, then turn Developer options off"));
         final String cmd = "adb shell pm grant " + getPackageName()
                 + " android.permission.WRITE_SECURE_SETTINGS";
         TextView cmdView = text(cmd, 13, TXT, false);
